@@ -1,2 +1,3 @@
 /build/script.py
-/data/input/*
+easy_gold/data/input/*
+easy_gold/data/output/*

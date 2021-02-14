@@ -1,25 +1,42 @@
 Kaggle script build system template
 ===================================
 
-Goal is to develop code normally, separating it into modules,
-and then package it into a single script for kaggle script submission.
 
-To create a submission, run ``./build.py``, this would
-compress the whole package into a script in ``./build/script.py``,
-which you can then submit into a kaggle script
-(most convenient way is via file upload).
+Init
+----
 
-Example kaggle script created in this way:
-https://www.kaggle.com/lopuhin/kaggle-script-template
+1. get train.csv/test.csv from Kaggle
+2. copy them to ``easy_gold/data/input/``
+3. edit ``easy_gold/config/default.json`` for data
+   a. features
+   b. target_name
+   c. ID_name
+   d. lgbm_params(objective, num_class)
 
-Adjustment:
 
-- if you want to rename the package from ``easy_gold`` (not sure why?)
-  then you need to change ``build.py``, ``setup.py`` and
-  ``script_template.py``.
-- if you want to adjust the entry point (currently ``easy_gold/main.py``),
-  or run several commands, change ``script_template.py``.
+How To Run
+----------
 
-This is quite basic, feel free to adjust to your needs.
+```bash
+$ cd easy_gold
+$ edit run.py for cv setting
+$ python run.py
+```
+
+How To Add Features
+-------------------
+
+1. features/create.pyにclassを追加
+2. ``python features/create.py`` 追加した特徴量用のfeatherファイルを生成
+3. config/default.jsonのfeaturesに、そのクラス名(小文字スネークケース)を追加し、実行時に追加した特徴量を利用するようにする
+
+
+
+How To Create Script For Kaggle Notebook
+----------------------------------------
+
+1. ``python build.py`` で ``build/script.py`` が作成される
+2. ``build.script.py`` をkaggle notebookにfile uplodaする
+
 
 License is MIT.

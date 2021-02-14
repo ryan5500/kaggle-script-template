@@ -6,6 +6,7 @@ Init
 ----
 
 1. get train.csv/test.csv from Kaggle
+   ``kaggle datasets download -p easy_gold/data/input {kaggle Dataset URL suffix}``
 2. copy them to ``easy_gold/data/input/``
 3. edit ``easy_gold/config/default.json`` for data
    a. features
